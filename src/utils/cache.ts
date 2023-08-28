@@ -26,7 +26,9 @@ export class Cache {
    */
   static put(key: string, value: any, ttl: number = 0): boolean {
     const item: Item = {
-      key, value, ttl: ttl == 0 ? Date.now() + 60 * 60 * 24 * 15 * 1000 : (Date.now() + ttl * 1000)
+      key,
+      value,
+      ttl: ttl == 0 ? Date.now() + 60 * 60 * 24 * 15 * 1000 : Date.now() + ttl * 1000
     }
 
     console.log(item)
@@ -41,7 +43,7 @@ export class Cache {
    * @param key
    */
   static get(key: string): any {
-    const rawValue = localStorage.getItem(this.cacheKey(key));
+    const rawValue = localStorage.getItem(this.cacheKey(key))
     if (!rawValue) {
       return null
     }

@@ -1,12 +1,12 @@
-import {useSessionState} from "@/stores/session";
+import { useSessionState } from '@/stores/session'
 
 export const usePermissionDirective = (el: HTMLElement, bindings: { value: string[] }) => {
   let display = 'none'
   const sessionState = useSessionState()
-  for (const permission of (bindings.value || [])) {
+  for (const permission of bindings.value || []) {
     if (sessionState.permissions.includes(permission)) {
-      display = 'display';
-      break;
+      display = 'display'
+      break
     }
   }
 

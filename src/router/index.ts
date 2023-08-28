@@ -1,9 +1,9 @@
-import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import {useSessionState} from "@/stores/session";
-import {Cache} from "@/utils/cache";
-import {TOKEN} from "@/types/consts";
-import LoginView from "@/views/auth/LoginView.vue";
+import { useSessionState } from '@/stores/session'
+import { Cache } from '@/utils/cache'
+import { TOKEN } from '@/types/consts'
+import LoginView from '@/views/auth/LoginView.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -15,14 +15,13 @@ const routes: RouteRecordRaw[] = [
     path: '/auth/login',
     name: 'Login',
     meta: {
-      title: '用户登录'
+      title: '系统登录'
     },
     components: {
       auth: LoginView
     }
   }
 ]
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
