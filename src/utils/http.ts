@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {Cache} from '@/utils/cache'
-import {TOKEN} from '@/types/consts'
-import {v4 as uuidV4} from 'uuid'
+import { Cache } from '@/utils/cache'
+import { TOKEN } from '@/types/consts'
+import { v4 as uuidV4 } from 'uuid'
 
 const buildVersion = import.meta.env.VITE_BUILD_VERSION || 'dev-main'
 const http = axios.create({
@@ -18,14 +18,17 @@ http.interceptors.request.use((cfg) => {
   return cfg
 })
 
-http.interceptors.response.use((response) => {
-  return Promise.resolve(response.data)
-}, error => {
-  if (error.response.data.msg || null) {
-    error = new Error(error.response.data.msg)
-  }
+http.interceptors.response.use(
+  (response) => {
+    return Promise.resolve(response.data)
+  },
+  (error) => {
+    if (error.response.data.msg || null) {
+      error = new Error(error.response.data.msg)
+    }
 
-  return Promise.reject(error)
-})
+    return Promise.reject(error)
+  }
+)
 
 export default http

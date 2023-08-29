@@ -1,8 +1,8 @@
-import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import {useSessionState} from '@/stores/session'
-import {Cache} from '@/utils/cache'
-import {TOKEN} from '@/types/consts'
+import { useSessionState } from '@/stores/session'
+import { Cache } from '@/utils/cache'
+import { TOKEN } from '@/types/consts'
 import LoginView from '@/views/auth/LoginView.vue'
 
 const siteName = import.meta.env.VITE_APP_NAME || 'Vite App'
@@ -30,7 +30,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
-  document.title = `${siteName} · ${to.meta?.title}`;
+  document.title = `${siteName} · ${to.meta?.title}`
   const sessionState = useSessionState()
   if (!sessionState.ready) {
     if (!Cache.get(TOKEN) && !to.path.startsWith('/auth/login')) {
