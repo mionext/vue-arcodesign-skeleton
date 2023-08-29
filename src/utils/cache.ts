@@ -31,7 +31,6 @@ export class Cache {
       ttl: ttl == 0 ? Date.now() + 60 * 60 * 24 * 15 * 1000 : Date.now() + ttl * 1000
     }
 
-    console.log(item)
     localStorage.setItem(this.cacheKey(key), JSON.stringify(item))
 
     return !!localStorage.getItem(this.cacheKey(key))
@@ -48,7 +47,6 @@ export class Cache {
       return null
     }
 
-    console.log(Date.now())
     const item: Item = JSON.parse(rawValue)
     if (item.ttl && item.ttl < Date.now()) {
       this.remove(key)

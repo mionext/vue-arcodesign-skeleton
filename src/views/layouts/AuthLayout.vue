@@ -1,6 +1,6 @@
 <template>
   <a-layout class="h-screen">
-    <a-layout-sider class="sidebar !p-3 md:!w-80 !bg-gray-800">
+    <a-layout-sider class="sidebar !p-3 md:!w-80 sm:xs:!w-0 !bg-gray-800">
       <img src="../../assets/logo.svg" class="cursor-pointer m-3" />
     </a-layout-sider>
     <a-layout class="main bg-gray-100">
@@ -16,12 +16,14 @@
         >
           © {{ new Date().getFullYear() }} MIO.
         </a-link>
-        <span class="!text-gray-300 !font-light !text-xs"> · Build: 0.0.98.266</span>
+        <span class="!text-gray-300 !font-light !text-xs"> · Build: {{ version }}</span>
       </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const version = import.meta.env.VITE_BUILD_VERSION || 'dev-main'
+</script>
 
 <style lang="css">
 .sidebar {
